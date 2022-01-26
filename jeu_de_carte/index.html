@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="TP1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1</title>
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+    <!-- javascripts -->
+    <script src="./assets/js/script.js" type="module" defer></script>
+</head>
+<body>
+    <main>
+        <header>  
+            <h1>TP1 - 21</h1>
+        </header>
+        <form data-js-form>
+            <label for="number-player">Combien de joueurs à cette table?</label>
+            <input name="number-player" type="number" data-js-input>
+            <button data-js-submit disabled>Jouer!</button>
+            <span data-js-error class="error"></span>
+        </form>
+        <div class="players" data-js-players></div>
+        <span data-js-game class="hide"></span>
+        <button data-js-replay class="hide">Rejouer</button>
+    </main>
+</body>
+</html>
