@@ -1,0 +1,75 @@
+/* https://codepen.io/tomhodgins/pen/zqZeqv */
+
+[data-pagination],
+[data-pagination] *,
+[data-pagination] *:before,
+[data-pagination] *:after {
+  box-sizing: border-box;
+
+}
+
+[data-pagination] {
+  font-size: 8pt;
+  line-height: 1;
+  font-weight: 400;
+  margin: 1em auto;
+  text-align: center;
+  transition: font-size 0.2s ease-in-out;
+}
+
+[data-pagination] ul {
+  list-style-type: none;
+  display: inline;
+  font-size: 100%;
+  margin: 0;
+  padding: 0.5em;
+}
+
+[data-pagination] ul li {
+  display: inline-block;
+  font-size: 100%;
+  width: auto;
+  border-radius: 3px;
+}
+
+[data-pagination] a {
+  color: var(--bleu);
+  font-size: 20pt;
+  padding: 0.5em;
+}
+
+[data-pagination] a:focus,
+[data-pagination] a:hover {
+  color: #c50215;
+}
+
+[data-pagination] li.current a {
+  color: var(--rouge-pale);
+  font-weight: 600;
+}
+
+/* Disabled & Hidden Styles */
+[data-pagination] .disabled,
+[data-pagination] [hidden],
+[data-pagination] [disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@media (max-width: 780px) {
+  [data-pagination] a {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 650px) {
+  [data-pagination] a {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 485px) {
+  [data-pagination] a {
+    font-size: 2.8vw;
+  }
+}

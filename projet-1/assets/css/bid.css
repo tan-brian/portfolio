@@ -1,0 +1,127 @@
+.bid {
+  background-color: var(--blanc);
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  border: solid 1px var(--gris-pale);
+  grid-row-start: span 2;
+}
+
+.bid h1 {
+  padding: 1.5em 1em;
+  background-color: var(--blue-pale);
+  border: 2px outset var(--bleu);
+  color: var(--blanc);
+  text-align: center;
+}
+
+.bid > section {
+  border-bottom: solid 1px var(--gris-pale);
+  padding: 1em;
+  font-size: 0.9em;
+  padding-left: 2em;
+}
+
+.bid > section > * {
+  padding-bottom: 0.3em;
+}
+
+.bid > section:first-of-type > span {
+  color: var(--rouge-pale);
+  margin-left: 0.3em;
+  font-style: italic;
+}
+
+.bid-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 3px;
+}
+
+.bid-info > span:nth-of-type(2) {
+  font-weight: 600;
+}
+
+.bid button {
+  padding: 0.5em 2.3em;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  background-color: var(--bleu-fonce);
+  border-color: hsl(222, 98%, 21%);
+  font-weight: 600;
+  color: var(--blanc);
+  margin-top: 1em;
+  margin-right: 1em;
+}
+
+.bid button:hover {
+  background-color: var(--blue-pale);
+  border-color: var(--blue-pale);
+}
+
+.bid button.btn-red {
+  background-color: var(--rouge-fonce);
+  border-color: var(--rouge-pale);
+}
+
+.bid button.btn-red:hover {
+  background-color: var(--rouge-pale);
+}
+
+.button-container {
+  display: flex;
+}
+
+.button-container button {
+  padding-left: 2.35em;
+  padding-right: 2.35em;
+}
+
+.bid label {
+  display: block;
+  margin-top: 1em;
+  font-size: 1.15em;
+  font-weight: 600;
+}
+
+.bid input {
+  height: 1.6em;
+  width: 13em;
+  margin-right: 0.5em;
+  padding-right: 0.6em;
+  font-size: 1.1em;
+  direction: rtl;
+}
+
+.bid input + button {
+  margin: 0;
+}
+
+.btn-info:hover {
+  transition: opacity 0.3s ease;
+}
+
+.btn-info:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.bid-history {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 34% auto auto;
+  row-gap: 0.8em;
+  padding-left: 2em;
+}
+
+.bid-history span:nth-child(-n + 3) {
+  font-weight: 600;
+}
+
+.bid-history a {
+  grid-column-start: span 3;
+}
+
+@media (max-width: 1200px) {
+  .grid-auction .bid {
+    display: none;
+  }
+}

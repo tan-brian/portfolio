@@ -1,0 +1,638 @@
+{% include ('header.html') %}  
+
+    <link rel="stylesheet" href="/projet-1/assets/css/form.css" />
+    <link rel="stylesheet" href="/projet-1/assets/css/page-fiche.css" />
+    <script> let idUsager = '{{session.idUsager}}';</script>
+    <script src="/projet-1/assets/js/fiche-produit.js" defer></script>
+  </head>
+  <body>
+    <main class="page-fiche">
+      <link rel="stylesheet" href="/projet-1/assets/css/sidebar.css" />
+      <input type="checkbox" class="sidebar-check" id="check">
+        <label for="check">
+        <span class="visually-hidden">menu mobile pour miser</span>
+          <i class="fa fa-gavel fa-2x sidebar-open" aria-hidden="true"></i>
+          <i class="fa fa-times fa-2x sidebar-close" aria-hidden="true" ></i>
+        </label>
+        <!-- Menu mobile pour miser -->
+        <div class="sidebar">
+          <link rel="stylesheet" href="/projet-1/assets/css/bid.css" />
+          <link rel="stylesheet" href="/projet-1/assets/css/popover.css" />
+          <section class="bid">
+            <div class="popover__wrapper">
+              <h1>Termine dans 2j 5h 55m 26s</h1>
+              <div class="popover__content">
+                <div class="time-zone">
+                  <span>CST / Beijing</span><span>May 21, 04:00 PM</span>
+                  <span>CEST / Berlin</span><span>May 21, 10:00 AM</span>
+                  <span>CDT / Chicago</span><span>May 21, 03:00 AM</span>
+                  <span>MSK / Moscow</span><span>May 21, 11:00 AM</span>
+                  <span>MDT / Denver</span><span>May 21, 02:00 AM</span>
+                  <span>EDT / New York</span><span>May 21, 04:00 AM</span>
+                </div>
+              </div>
+            </div>
+            <section>
+              <h2>Offre Courant : 35$</h2>
+              <span>pas de prix plancher</span>
+            </section>
+            <section>
+              <h2>Mise minimale suivante: 40$</h2>
+              <div class="bid-info">
+                <span>Emplacement du vendeur :</span> <span>État-Unis</span>
+                <span>Expédition au Canada :</span> <span>35$</span
+                ><span>Frais d'enchère :</span>
+                <span> 9% de l'offre gagnante</span>
+              </div>
+            </section>
+            <section>
+              <h3>Mise rapide</h3>
+              <div class="button-container">
+                <button>40 $</button>
+                <button>42 $</button>
+                <button>44 $</button>
+              </div>
+              <label for="direct">Miser directement</label>
+              <input
+                aria-label="mise direct"
+                type="number"
+                name="direct"
+                id="direct"
+              />
+              <button>Miser</button>
+              <label for="auto"
+                >Placer une mise automatique
+                <i class="btn-info fa fa-info-circle" aria-hidden="true"></i
+              ></label>
+              <input
+                aria-label="mise automatique"
+                type="number"
+                name="auto"
+                id="auto"
+              />
+              <button class="btn-red">Miser</button>
+            </section>
+            <link rel="stylesheet" href="/projet-1/assets/css/modal.css" />
+            <div class="modal-container">
+              <div class="box">
+                <button class="btn-close">X</button>
+                <h2>Comment fonctionnent les mises automatiques?</h2>
+                <p>
+                  En configurant une mise automatique, notre système placera
+                  automatiquement de nouvelles offres en votre nom chaque fois
+                  qu'une offre dépasse la vôtre. Tout ce que vous avez à faire est
+                  de saisir le prix maximum que vous êtes prêt à miser pour un
+                  article. Notre système continuera alors à miser pour vous, par
+                  la plus petite augmentation possible à chaque fois, jusqu'à ce
+                  que votre prix maximum soit atteint.
+                </p>
+              </div>
+            </div>
+            <div class="bid-history">
+              <span>Bidder 9644</span><span>19-05-2021 04:16:47</span
+              ><span>220 $</span> <span>Bidder 3205</span
+              ><span>19-05-2021 04:16:32</span><span>200 $</span>
+              <span>Bidder 9644</span><span>19-05-20210 4:16:19</span
+              ><span>180 $</span> <span>Bidder 3205</span
+              ><span>17-05-2021 11:19:57</span><span>145 $</span>
+              <span>Bidder 9644</span><span>16-05-2021 16:16:45</span
+              ><span>135 $</span>
+              <a href="#">Voir tous les offres</a>
+            </div>
+          </section>
+        </div>
+        
+      <div class="grid-auction">
+        <!-- Carroussel d'images-->
+        <link rel="stylesheet" href="/projet-1/assets/css/slider.css" />
+        <section class="slider-container">
+          <h1>
+            {{enchere.nomEnchere}}
+          </h1>
+          <h2>LOT {{enchere.idEnchere}}</h2>
+          <link rel="stylesheet" href="/projet-1/assets/css/zoom.css" />
+          <div class="img-container">
+            <div class="img-zoomer-box">
+              <img
+                alt="timbre"
+                src="/projet-1/assets/img/{{timbre.imagePrincipale}}"
+                class="current-image zoom-img1"
+              />
+              <div class="zoom-img2"></div>
+            </div>
+          </div>
+          <span class="arrow arrow-left disabled"
+            ><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i
+          ></span>
+          <ul class="next-list" tabindex="0"> 
+            {% for image in images %}
+            <li>
+              <img
+                src="/projet-1/assets/img/{{image}}"
+                alt="{{image}}"
+                class="image-of-list {% if loop.index0 == 0 %}current-image-list {% endif %}"
+              />
+               
+            </li>
+        {% endfor %}
+          
+          </ul>
+          
+          <span class="arrow arrow-right {% if images|length == 1 %} disabled {% endif %}"
+            ><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i
+          ></span>
+        </section>
+        <!-- Panneau pour miser -->
+        <section class="bid">
+          <div class="popover__wrapper">
+            {% if enchere.dateDebut > "now"|date("Y-m-d H:i:s") %}
+            <h1>Commence dans <span data-js-timer>{{enchere.dateDebut}}</span></h1>
+            {% elseif enchere.dateFin > "now"|date("Y-m-d H:i:s") %}
+            <h1>Termine dans <span data-js-timer>{{enchere.dateFin}}</span></h1>
+            {% else %}
+            <h1>Enchère expirée</h1>
+            {% endif %}
+            <div class="popover__content">
+              <div class="time-zone">
+                <span>CST / Beijing</span><span>May 21, 9:00 AM</span>
+                <span>CEST / Berlin</span><span>May 21, 10:00 AM</span>
+                <span>CDT / Chicago</span><span>May 21, 03:00 AM</span>
+                <span>MSK / Moscow</span><span>May 21, 11:00 AM</span>
+                <span>MDT / Denver</span><span>May 21, 02:00 AM</span>
+                <span>EDT / New York</span><span>May 21, 04:00 AM</span>
+              </div>
+            </div>
+          </div>
+          <section>
+            {% if mises|length == 0 %}
+            <h2>Offre Courant : 0$</h2>
+            {% else %}
+              {% if enchere.dateFin < "now"|date("Y-m-d H:i:s") %}
+              <h2>Offre finale : {{mises[0].offre}}$</h2>
+              {% else %}
+              <h2>Offre Courant : {{mises[0].offre}}$</h2>
+              {%endif%}
+            {% endif %}
+            {% if enchere.prixPlancher == 0 %}
+            <span>pas de prix plancher</span>
+            {% else %}
+            <span>prix plancher : <span class="bold">{{enchere.prixPlancher}} $</span></span>
+            {% endif %}
+          </section>
+          <section>
+            {% if mises|length == 0 and enchere.prixPlancher == 0 %}
+            <h2>Mise minimale suivante: 5$</h2>
+            <input type="hidden" name="mise-minimale" value="5">
+            {%elseif mises|length == 0 and enchere.prixPlancher != 0 %}
+            <h2>Mise minimale suivante: {{ enchere.prixPlancher }}$</h2>
+            <input type="hidden" name="mise-minimale" value="{{ enchere.prixPlancher }}">
+            {% else %}
+            <h2>Mise minimale suivante: {{ mises[0].offre + 5 }}$</h2>
+            <input type="hidden" name="mise-minimale" value="{{  mises[0].offre + 5  }}">
+            {% endif %}
+            <div class="bid-info">
+              <span>Emplacement du vendeur :</span> <span>{{ pays[vendeur.idPays - 1].nomPays }}</span>
+              {% if session.username is not defined %}
+              <span>Expédition au Canada :</span> <span>35$</span>
+              {% else %}
+              <span>Expédition au {{ pays[session.idPays - 1].nomPays }} :</span> <span>{{pays[session.idPays - 1].fraisExpedition}} $</span>
+              {% endif %}
+              <span>Frais d'enchère :</span>
+              <span> {{ enchere.fraisEnchere }}% de l'offre gagnante</span>
+            </div>
+          </section>
+          <section>
+            <form method="POST" action="/projet-1/enchere/miser">
+              <h3>Mise rapide</h3>
+              <div class="button-container">
+                {% if mises|length == 0 and enchere.prixPlancher == 0 %}
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="5" >5 $</button>
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="7">7 $</button>
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="9">9 $</button>
+                {%elseif mises|length == 0 and enchere.prixPlancher != 0 %}
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="{{enchere.prixPlancher}}" >{{enchere.prixPlancher}} $</button>
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="{{enchere.prixPlancher + 2}}">{{enchere.prixPlancher + 2}} $</button>
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="{{enchere.prixPlancher + 4}}">{{enchere.prixPlancher + 4}} $</button>
+                {% else %}
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="{{ mises[0].offre + 5 }}">{{ mises[0].offre + 5 }} $</button>
+                <button type="submit"{% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="{{ mises[0].offre + 7 }}">{{ mises[0].offre + 7 }} $</button>
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %} name="offre" value="{{ mises[0].offre + 9 }}">{{ mises[0].offre + 9 }} $</button>
+                {% endif %}
+                <input type="hidden" name="idUsager" value="{{ session.idUsager}}">
+                <input type="hidden" name="idEnchere" value="{{ enchere.idEnchere}}">
+                <input type="hidden" name="dateMise" value="{{"now"|date("Y-m-d H:i:s")}}">
+              </div>
+            </form>
+              <form method="POST" action="/projet-1/enchere/miser">
+                <label for="mise-direct">Miser directement</label>
+                <input
+                  aria-label="mise direct"
+                  type="number"
+                  name="mise-direct"
+                  id="mise-direct"
+                />
+                <button type="submit" {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} class="disabled" {% endif %}>Miser</button>
+                {% if erreurs is defined and post['mise-direct'] is defined %}
+                  <ul> 
+                      
+                      {% for erreur in erreurs %}
+                          <li class="bold">{{ erreur }}</li>
+                      {% endfor %}
+                  </ul>
+                {% endif %}  
+                <input type="hidden" name="idUsager" value="{{ session.idUsager}}">
+                <input type="hidden" name="idEnchere" value="{{ enchere.idEnchere}}">
+                <input type="hidden" name="dateMise" value="{{"now"|date("Y-m-d H:i:s")}}">
+                {% if mises|length == 0 and enchere.prixPlancher == 0 %}
+                <input type="hidden" name="mise-minimale" value="5">
+                {%elseif mises|length == 0 and enchere.prixPlancher != 0 %}
+                <input type="hidden" name="mise-minimale" value="{{ enchere.prixPlancher }}">
+                {% else %}
+                <input type="hidden" name="mise-minimale" value="{{  mises[0].offre + 5  }}">
+                {% endif %}
+              </form>
+              <form method="POST" action="/projet-1/enchere/miser">
+              <label for="mise-auto"
+                >Placer une mise automatique
+                <i class="btn-info fa fa-info-circle" aria-hidden="true"></i
+              ></label>
+              <input
+                aria-label="mise automatique"
+                type="number"
+                name="mise-auto"
+                id="mise-auto"
+              />
+              <button type="submit" class="btn-red {% if session.username is not defined or session.idUsager == timbre.idUsager or enchere.dateFin < "now"|date("Y-m-d H:i:s")  or enchere.dateDebut > "now"|date("Y-m-d H:i:s") %} disabled {% endif %}">Miser</button>
+              <input type="hidden" name="idUsager" value="{{ session.idUsager}}">
+                <input type="hidden" name="idEnchere" value="{{ enchere.idEnchere}}">
+                <input type="hidden" name="dateMise" value="{{"now"|date("Y-m-d H:i:s")}}">
+                {% if mises|length == 0 and enchere.prixPlancher == 0 %}
+                <input type="hidden" name="mise-minimale" value="5">
+                {%elseif mises|length == 0 and enchere.prixPlancher != 0 %}
+                <input type="hidden" name="mise-minimale" value="{{ enchere.prixPlancher }}">
+                {% else %}
+                <input type="hidden" name="mise-minimale" value="{{  mises[0].offre + 5  }}">
+                {% endif %}
+              {% if erreurs is defined and post['mise-auto'] is defined %}
+              <ul> 
+                  {% for erreur in erreurs %}
+                      <li class="bold">{{ erreur }}</li>
+                  {% endfor %}
+              </ul>
+              {% endif %} 
+            </form>
+          </section>
+          <div class="modal-container">
+            <div class="box">
+              <button class="btn-close">X</button>
+              <h2>Comment fonctionnent les mises automatiques?</h2>
+              <p>
+                En configurant une mise automatique, notre système placera
+                automatiquement de nouvelles offres en votre nom chaque fois
+                qu'une offre dépasse la vôtre. Tout ce que vous avez à faire est
+                de saisir le prix maximum que vous êtes prêt à miser pour un
+                article. Notre système continuera alors à miser pour vous, par
+                la plus petite augmentation possible à chaque fois, jusqu'à ce
+                que votre prix maximum soit atteint.
+              </p>
+            </div>
+          </div>
+          <div class="bid-history">
+            {% if mises|length == 0 %}
+             <span class="bold">Aucune mise.</span>
+             {% else %}
+             {% for mise in mises|slice(0, 5) %}
+            <span>Bidder {{mise.idUsager}}</span><span>{{mise.dateMise}}</span
+            ><span>{{mise.offre}} $</span>
+            {% endfor %}
+            {% if mises|length > 5%}
+            <a href="#">Voir tous les offres</a>
+            {% endif %}
+            {% endif %}
+          </div>
+        </section>
+        <!-- Détails rapides sur le vendeur -->
+        <div class="seller-wrapper">
+          <section>
+            <h3>Vendeur</h3>
+            <figure class="seller">
+              <img
+                src="/projet-1/assets/img/{{pays[vendeur.idPays - 1].imagePays}}"
+                title="{{pays[vendeur.idPays - 1].nomPays}}"
+                alt="drapeau du vendeur"
+              />
+              <a href="#">{{ vendeur.nomUsager }}</a>
+              <img
+                src="/projet-1/assets/img/verifie.png"
+                title="Vérifié"
+                alt="compte vérifié"
+              />
+              <img
+                src="/projet-1/assets/img/meilleur-vendeur.png"
+                title="
+						Best-seller"
+                alt="
+						Best-seller"
+              />
+            </figure>
+            {%if nbCommentaire > 0%}
+            {% if nbCommentairePositif / nbCommentaire * 100 >= 50 %}
+            <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>
+            {% else %}
+            <i class="fa fa-thumbs-down fa-2x" aria-hidden="true"></i>
+            {% endif %}
+              <span>{{ (nbCommentairePositif / nbCommentaire * 100)|round }}%</span>
+            {% endif %}
+            {% if nbCommentaire <= 1 %}
+            <a data-seller href="#seller">{{ nbCommentaire }} commentaire</a>
+            {% else %}
+            <a data-seller href="#seller">{{ nbCommentaire }} commentaires</a>
+            {% endif %}
+          </section>
+          <section>
+            <h3>Expédition</h3>
+            {% if session.username is not defined %}
+              <a data-expedition href="#expedition">Vers le Canada : 35$</a>
+              {% else %}
+              <a data-expedition href="#expedition">Vers le {{ pays[session.idPays - 1].nomPays }} : {{pays[session.idPays - 1].fraisExpedition}}$</a>
+              {% endif %}
+          </section>
+          <section>
+            <h3>Paiement</h3>
+            <a id="payments" href="#!">Méthodes de paiement</a>
+          </section>
+          {% if session.username is defined%}
+          <div class="like-button">
+            <i data-js-enchere="{{enchere.idEnchere}}" class="fa {% if favori|length == 0 %} fa-heart-o {% else %} fa-heart {% endif %} fa-2x"></i>
+          </div>
+          {% endif %}
+          <div class="modal-container">
+            <div class="box">
+              <button class="btn-close">X</button>
+              <h2>Modes de paiement acceptés</h2>
+              <i title="visa" class="fa fa-cc-visa" aria-hidden="true"></i>
+              <i
+                title="mastercard"
+                class="fa fa-cc-mastercard"
+                aria-hidden="true"
+              ></i>
+              <i title="paypal" class="fa fa-cc-paypal" aria-hidden="true"></i>
+              <i
+                title="american express"
+                class="fa fa-cc-amex"
+                aria-hidden="true"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <!-- Informations sur l'enchère détaillé -->
+        <div class="details-container">
+          <details open>
+            <summary>
+              <h2>Description</h2>
+            </summary>
+            <h3>
+              {{enchere.nomEnchere}}
+            </h3>
+            <pre>{{enchere.description}}</pre>
+          </details>
+          <details>
+            <summary>
+              <h2>Détails du lot</h2>
+            </summary>
+            <div class="lot-details">
+              <span>Pays d'origine :</span> <span>{{ pays[timbre.idPays - 1].nomPays }}</span>
+              <span>Composition :</span> <span>Collection</span>
+              <span>Description courte :</span>
+              <span
+                >Lot with only topical stamps Tintin, stamps, stamps from
+                blocks, blocks etc etc</span
+              >
+              <span>Année du timbre le plus ancien :</span> <span>1979</span>
+              <span>Année du timbre le plus récent :</span> <span>2014</span>
+              <span>Condition :</span> <span>Parfaits</span>
+              <span>Certification :</span> <span>Non</span>
+              <span>Thème :</span> <span>Bandes dessinées</span>
+            </div>
+          </details>
+          <details id="expedition">
+            <summary>
+              <h2>Expédition</h2>
+            </summary>
+            <section>
+              <h3>Coûts d'expédition</h3>
+              {% if session is not defined %}
+              <span>Expédition au Canada: 35 $</span>
+              {% else %}
+              <span>Expédition au {{ pays[session.idPays - 1].nomPays }}: {{pays[session.idPays - 1].fraisExpedition}} $</span>
+              {% endif %}   
+              <a href="#">Autres destinations</a>
+            </section>
+            <section>
+              <h3>Peut être expédié avec d'autres objets</h3>
+              <p>
+                Si vous achetez plusieurs articles du même vendeur dans cette
+                enchère, ils seront expédiés ensemble et vous ne paierez que les
+                frais de port les plus élevés.
+              </p>
+            </section>
+            <section>
+              <h3>Informations douanières</h3>
+              <p>
+                Tous les autres coûts ou frais tels que les droits de douane ou
+                d'importation, le dédouanement et la manutention peuvent
+                également s'appliquer lors de l'expédition de votre lot et vous
+                seront facturés par la partie impliquée à un stade ultérieur, le
+                cas échéant.
+              </p>
+            </section>
+          </details>
+          <!-- Commentaires -->
+          <details id="seller">
+            <summary>
+              <h2>Vendeur</h2>
+            </summary>
+            <figure class="seller">
+              <img
+                src="/projet-1/assets/img/{{pays[vendeur.idPays - 1].imagePays}}"
+                title="{{pays[vendeur.idPays - 1].nomPays}}"
+                alt="drapeau du vendeur"
+              />
+              <a href="#">{{vendeur.nomUsager}}</a>
+              <img
+                src="/projet-1/assets/img/verifie.png"
+                title="Vérifié"
+                alt="compte vérifié"
+              />
+              <img
+                src="/projet-1/assets/img/meilleur-vendeur.png"
+                title="
+						Best-seller"
+                alt="
+						Best-seller"
+              />
+            </figure>
+            <span>Membre de Stampee depuis {{ commentaires[0].dateCreation }}</span>
+            {% if nbCommentaire <= 1 %}
+            <span>{{ nbCommentaire }} commentaire ({{nbCommentaire12mois}} au cours des 12 derniers mois)</span>
+            {% else %}
+            <span>{{ nbCommentaire }} commentaires ({{nbCommentaire12mois}} au cours des 12 derniers mois)</span>
+            {% endif %}
+            <section>
+              <h3>Commentaires (12 derniers mois)</h3>
+              {%if nbCommentaire > 0%}
+              <span>Score de rétroaction: {{ (nbCommentairePositif / nbCommentaire * 100)|round }}%</span>
+              {% endif %}
+              <span>Nombre de commentaires : {{nbCommentaire12mois}}</span>
+              <figure class="rating">
+                <div>
+                  <div class="thumb-up">
+                    <span>{{nbCommentairePositif}}</span
+                    ><i class="fa fa-thumbs-up fa-2x {% if session.username is not defined or session.idUsager == timbre.idUsager %} disabled {% endif %}" aria-hidden="true"></i>
+                  </div>
+                  <div class="thumb-down">
+                    <span>{{nbCommentaire - nbCommentairePositif}}</span
+                    ><i class="fa fa-thumbs-down fa-2x {% if session.username is not defined or session.idUsager == timbre.idUsager %} disabled {% endif %}" aria-hidden="true"></i>
+                  </div>
+                </div>  
+              </figure>
+              <span data-js-comment-erreur></span>
+              {% if session.username is defined %}
+              <details class="form">
+                <summary>
+                  <h4>Écrire un commentaire</h4>
+                </summary>
+               <form data-js-form-comment class="commentaire"  method="POST" action="/projet-1/enchere/commenter">
+                <textarea name="texte" cols="80" rows="15"></textarea>
+                <input type="hidden" name="date" value="{{"now"|date("Y-m-d H:i:s")}}">
+                <input type="hidden" name="idUsager" value="{{session.idUsager}}">
+                <input type="hidden" name="idEnchere" value="{{enchere.idEnchere}}">
+                <input data-js-reaction type="hidden" value="" name="reaction">
+                <div>
+                  <button data-js-btnComment type="submit">Sauvegarder</button>
+                </div>
+               </form>
+              </details>
+              {% endif %}
+              <section data-js-section-commentaire>
+                <h3>Commentaires les plus récents</h3>
+                <ul>
+                  {% for commentaire in commentaires %}
+                  <li class="comment">
+                    {% if commentaire.reaction == 'positive' %}
+                    <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fa fa-thumbs-down fa-2x" aria-hidden="true"></i>
+                    {% endif%}
+                    <div>
+                      <p>{{ commentaire.texte }}</p>
+                      <a href="#">Voir la traduction</a>
+                      <span>{{ commentaire.nomUsager }} | {{commentaire.date}}</span>
+                    </div>
+                    {% if commentaire.idUsager == session.idUsager %}
+                    <a data-js-modifier href="#">Modifier</a>
+                    <a href="/projet-1/enchere/supprimerCommentaire/{{commentaire.idCommentaire}}">Supprimer</a>
+                    {% endif %}
+                  </li>
+                  <details data-js-form-modifier class="form visually-hidden">
+                    <summary>
+                      Modifier un commentaire
+                    </summary>
+                   <form class="commentaire" method="POST" action="/projet-1/enchere/modifierCommentaire">
+                    <textarea data-js-texte-modifier name="texte" cols="80" rows="15">{{ commentaire.texte }}</textarea>
+                    <input type="hidden" name="date" value="{{"now"|date("Y-m-d H:i:s")}}">
+                    <input type="hidden" name="idCommentaire" value="{{commentaire.idCommentaire}}">
+                    <input type="hidden" name="idEnchere" value="{{enchere.idEnchere}}">
+                    <div>
+                      <button data-js-btnCommentModifier type="submit">Sauvegarder</button>
+                    </div>
+                   </form>
+                   <span class="bold" data-js-modifier-erreur></span>
+                  </details>
+                  {% endfor %}
+                </ul>
+                {% if nbCommentaire > 10 %}
+                <a href="#">Voir tous les commentaires</a>
+                {% endif %}
+              </section>
+            </section>
+          </details>
+        </div>
+      </div>
+      <!-- Enchères similaires-->
+      <link rel="stylesheet" href="/projet-1/assets/css/stamp.css" />
+      <link rel="stylesheet" href="/projet-1/assets/css/main.css" />
+      <aside class="similar-stamps">
+        <h2>Enchères similaires</h2>
+        <figure>
+          <div class="stamp">
+            <a href="#">
+              <img src="/projet-1/assets/img/timbre-001.jpg" alt="timbre" />
+              <div>
+                <h3>
+                  Belgium - Private issues: Elaborate lot with many extras,
+                  amongst others, curiosities, cards etc. PR
+                </h3>
+                <span>Offre finale</span>
+                <span>15 $</span>
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i><span>Enchère expirée</span></span>
+              </div>
+            </a>
+          </div>
+          <div class="stamp">
+            <a href="#">
+              <img src="/projet-1/assets/img/cageTimbre.jpg" alt="timbre" />
+              <div>
+                <h3>
+                  Leuchtturm - Three Grande albums with slipcases + fifty Grande
+                  two-pocket sheets, new
+                </h3>
+                <span>Offre courant</span>
+                <span>150 $</span>
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i><span>3j 18h 47m 4s</span></span>
+              </div>
+            </a>
+          </div>
+          <div class="stamp">
+            <a href="#">
+              <img src="/projet-1/assets/img/timbre-002.jpg" alt="timbre" />
+              <div>
+                <h3>
+                  Leuchtturm - Three FDC albums + pages for six hundred FDCs +
+                  slipcases
+                </h3>
+                <span>Offre courant</span>
+                <span>15 $</span>
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i><span>18h 33m 3s</span></span>
+              </div>
+            </a>
+          </div>
+          <div class="stamp">
+            <a href="#">
+              <img src="/projet-1/assets/img/timbre-003.jpg" alt="timbre" />
+              <div>
+                <h3>
+                  Leuchtturm - Three FDC albums + pages for six hundred FDCs +
+                  slipcases
+                </h3>
+                <span>Offre courant</span>
+                <span>25 $</span>
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i><span>2j 18h 47m 57s</span></span>
+              </div>
+            </a>
+          </div>
+          <div class="stamp">
+            <a href="#">
+              <img src="/projet-1/assets/img/timbre.jpg" alt="timbre" />
+              <div>
+                <h3>BClassic Europe / Overseas 1840/1900 - Michel</h3>
+                <span>Offre courant</span>
+                <span>25 $</span>
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i><span>2j 18h 47m 9s</span></span>
+              </div>
+            </a>
+          </div>
+        </figure>
+      </aside>
+    </main>
+    {% include ('footer.html') %}  

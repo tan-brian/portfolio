@@ -1,0 +1,273 @@
+.grid-auction {
+  display: grid;
+  grid-template-columns: 50em 25em;
+  grid-template-rows: 43em auto auto;
+  column-gap: 3em;
+  justify-content: center;
+}
+
+details {
+  border-bottom: 1px solid #b8b8b9;
+}
+
+details > * {
+  margin: 1.2em 0;
+}
+
+details span {
+  display: block;
+  margin: 0.2em 0;
+}
+
+details > *:not(summary) {
+  margin-left: 1em;
+}
+
+details > h3 {
+  margin-left: 0.8em;
+}
+
+details > p {
+  line-height: 1.1;
+}
+
+details a {
+  margin-top: 0.2em;
+  text-decoration: underline;
+}
+
+details section > * {
+  margin-bottom: 0.3em;
+}
+
+summary {
+  cursor: pointer;
+}
+
+summary > * {
+  display: inline;
+}
+
+.seller-wrapper {
+  margin-top: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  gap: 4.5em;
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  background-color: var(--blanc);
+}
+
+.seller-wrapper > * {
+  margin-bottom: 0.5em;
+}
+
+.seller-wrapper a {
+  text-decoration: underline;
+}
+
+.seller-wrapper .like-button i {
+  font-size: 2.8em;
+  margin-right: 0;
+}
+
+.seller-wrapper i {
+  font-size: 1.3em;
+}
+
+.seller-wrapper .seller {
+  font-size: initial;
+}
+
+.seller-wrapper h3,
+.seller-wrapper .seller {
+  margin-bottom: 0.4em;
+}
+
+.seller img {
+  height: 18px;
+  width: 18px;
+}
+
+.seller img + a {
+  margin: 0 0.3em;
+}
+
+.lot-details {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  row-gap: 0.3em;
+}
+
+.lot-details span:nth-child(2n-1) {
+  font-weight: 600;
+}
+
+.fa-thumbs-up {
+  color: var(--bleu);
+}
+
+.fa-thumbs-down {
+  color: var(--rouge-fonce);
+}
+
+.thumb-up i:hover {
+  color: var(--blue-pale);
+}
+
+.thumb-down i:hover {
+  color: var(--rouge-pale);
+}
+
+figure i {
+  transition: color 0.3s ease;
+}
+
+figure i:hover {
+  cursor: pointer;
+}
+
+figure span {
+  font-weight: 600;
+}
+
+figure > div {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+.rating > div > * {
+  margin: 1em 4em;
+}
+
+.rating + span {
+  text-align: center;
+  font-weight: 600;
+}
+
+.comment {
+  display: flex;
+  margin-top: 1.5em;
+}
+
+.comment div {
+  margin-left: 0.5em;
+}
+
+.comment div p {
+  margin-bottom: 0.1em;
+  max-width:60ch;
+  word-wrap:break-word;
+}
+
+.comment div a,
+.comment div span {
+  font-size: 0.9em;
+  margin-top: 0.5em;
+}
+
+.comment > a {
+  height: min-content;
+  margin-right: 1em;
+}
+
+details section > ul {
+  margin-bottom: 1em;
+}
+
+.comment details {
+  background-color: var(--gris);
+  margin-top: 0.5em;
+  padding: 0.1em;
+  border-bottom: 0;
+}
+
+.comment + .form {
+  margin-top: unset;
+}
+
+.comment details > summary {
+  list-style-type: none;
+}
+
+.comment details > summary::before {
+  content: "↪";
+  font-size: 1.6em;
+}
+
+.comment summary {
+  margin-left: 0.7em;
+}
+
+.comment details p {
+  margin-bottom: 1em;
+}
+
+.similar-stamps {
+  padding: 1em;
+  margin-top: 3em;
+  padding-right: 5em;
+}
+
+.similar-stamps h2 {
+  margin-bottom: 1em;
+}
+
+@media (max-width: 1200px) {
+  .grid-auction {
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .similar-stamps figure {
+    overflow-x: scroll;
+    width: 80vw;
+    border: 3px inset var(--gris);
+  }
+}
+
+@media (max-width: 1040px) {
+  .grid-auction {
+    width: 100%;
+  }
+
+  .similar-stamps {
+    padding: 0;
+  }
+}
+
+@media (max-width: 850px) {
+  .grid-auction {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 770px) {
+  .seller-wrapper {
+    gap: 2vw;
+  }
+
+  .slider-container h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 570px) {
+  .grid-auction {
+    grid-template-rows: 102vw auto auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .grid-auction {
+    grid-template-rows: 125vw auto auto;
+  }
+
+  .slider-container h1 {
+    font-size: 1.3em;
+  }
+}

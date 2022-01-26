@@ -1,0 +1,73 @@
+{% include ('header.html') %} 
+  <link rel="stylesheet" href="/projet-1/assets/css/list.css" />
+  <link rel="stylesheet" href="/projet-1/assets/css/form.css" />
+
+  <main>
+    {% if encheres|length > 0 %}
+      <section class="myAuction-list">
+        
+          <h1>Mes enchères</h1>
+        
+          <ul> 
+            {% for enchere in encheres %}
+                <li>
+                   <a href="/projet-1/enchere/enchereId/{{enchere.idEnchere}}">{{enchere.nomEnchere}}</a>
+                   <a href="/projet-1/enchere/modifierEnchere/{{enchere.idEnchere}}">Modifier</a>
+                </li>
+            {% endfor %}
+        </ul>
+      </section>
+    {% endif%}
+      <section class="form">
+          <h2>{{pageTitre}}</h2>
+
+          <form {% if erreurs[0] == "Les enchères qui ont des offres ne peuvent être modifiés" %} class="disabled" {% endif %}  method="POST" action="/projet-1/enchere/gererEnchere">
+            <label  for="nomEnchere" >Nom de l'enchère :</label>
+            <input type="text" id="nomEnchere" name="nomEnchere" value="{{ post.nomEnchere }}"/>
+            <label  for="prixPlancher" >Prix plancher :</label>
+            <input type="number" id="prixPlancher" name="prixPlancher" value="{{ post.prixPlancher }}"/>
+            <input type="hidden" id="fraisEnchere" name="fraisEnchere" value="9">
+            <label for="description" >Description :</label>
+            <textarea  name="description" id="description" rows="15">{{ post.description }}</textarea>
+            <div>
+                <label  for="dateDebut" >Date de début : </label>
+                <input type="date" id="dateDebut" name="dateDebut" value="{{ post.dateDebut }}"/>
+                <label  for="dateDebut" >Date de fin : </label>
+                <input type="date" id="dateFin" name="dateFin" value="{{ post.dateFin }}"/>
+            </div>
+            <ul>
+              {% if post.idEnchere != null %} 
+                {% for monTimbre in mesTimbres %}
+                    <li>
+                        <h3>{{ monTimbre.nomTimbre }}</h3>
+                        <img src="/projet-1/assets/img/{{ monTimbre.imagePrincipale }}" alt="{{ monTimbre.nomTimbre }}">
+                        <input type="checkbox"  name="timbres[]" value="{{monTimbre.idTimbre}}" checked /> 
+                    </li>
+                {% endfor %}
+              {% endif%}
+              {% for timbre in timbres %}
+                  <li>
+                      <h3>{{ timbre.nomTimbre }}</h3>
+                      <img src="/projet-1/assets/img/{{ timbre.imagePrincipale }}" alt="{{ timbre.nomTimbre }}">
+                      <input type="checkbox"  name="timbres[]" value="{{timbre.idTimbre}}"/> 
+                  </li>
+              {% endfor %}
+          </ul>
+            <div>
+              {% if post.idEnchere != null %}
+                <input type="hidden" name="idEnchere" value="{{ post.idEnchere }}">
+                <a href="/projet-1/enchere/supprimerEnchere/{{ post.idEnchere }}" class="link-button">Supprimer</a>
+              {% endif %}
+              <button type="submit">Sauvegarder</button>
+            </div>
+          </form>
+          {%if erreurs is defined %}
+            <ul> 
+                {% for erreur in erreurs %}
+                    <li>{{ erreur }}</li>
+                {% endfor %}
+            </ul>
+           {% endif %}  
+      </section>
+  </main>
+  {% include ('footer.html') %} 

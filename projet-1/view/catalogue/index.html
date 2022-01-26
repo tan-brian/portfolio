@@ -1,0 +1,497 @@
+{% include ('header.html') %}
+    <link rel="stylesheet" href="/projet-1/assets/css/sidebar.css" />
+    <script src="/projet-1/assets/js/catalogue-produits.js" defer></script>
+    <script> let idUsager = '{{session.idUsager}}';</script>
+    <main>
+      <!-- Menu mobile pour Filtres de recherche -->
+      <link rel="stylesheet" href="/projet-1/assets/css/search-filter.css" />
+      <input type="checkbox" class="sidebar-check" id="check">
+      <label for="check">
+        <span class="visually-hidden">menu mobile pour filtrer les timbres</span>
+        <i class="fa fa-search sidebar-open"  aria-hidden="true"></i>
+        <i class="fa fa-times fa-2x sidebar-close" aria-hidden="true" ></i>
+      </label>
+      <div class="sidebar">
+        <form class="search-filter">
+          <section data-js-section>
+            <h3>
+              Recherche spécifique<span class="chevron chevron-btn"></span>
+            </h3>
+            <div data-js-detail class="show">
+              <input
+                type="search"
+                aria-label="recherche spécifique"
+                placeholder=" Votre recherche..."
+                name="recherche-specifique"
+                data-js-search
+              />
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>
+              Pays d'origine<span class="chevron chevron-btn bottom"></span>
+            </h3>
+            <div data-js-detail class="show hide">
+              <input type="checkbox" name="canada" value="canada" id="sidebar-canada" />
+              <label for="sidebar-canada">Canada</label>
+              <input type="checkbox" name="usa" value="usa" id="sidebar-usa" />
+              <label for="sidebar-usa">État-Unis</label>
+              <input
+                type="checkbox"
+                name="angleterre"
+                value="angleterre"
+                id="sidebar-angleterre"
+              />
+              <label for="sidebar-angleterre">Angleterre</label>
+              <input type="checkbox" name="france" value="france" id="sidebar-france" />
+              <label for="sidebar-france">France</label>
+              <input type="checkbox" name="russie" value="russie" id="sidebar-russie" />
+              <label for="sidebar-russie">Russie</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Date de fin<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input type="checkbox" name="demain" value="demain" id="sidebar-demain" />
+              <label for="sidebar-demain">Demain</label>
+              <input type="checkbox" name="2jours" value="2jours" id="sidebar-2jours" />
+              <label for="sidebar-2jours">2 Jours</label>
+              <input type="checkbox" name="3jours" value="3jours" id="sidebar-3jours" />
+              <label for="sidebar-3jours">3 Jours</label>
+              <input type="checkbox" name="4jours" value="4jours" id="sidebar-4jours" />
+              <label for="sidebar-4jours">4 Jours</label>
+              <input type="checkbox" name="5jours" value="5jours" id="sidebar-5jours" />
+              <label for="sidebar-5jours">5 Jours</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Condition<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input
+                type="checkbox"
+                name="parfaite"
+                value="parfaite"
+                id="sidebar-parfaite"
+              />
+              <label for="sidebar-parfaite">Parfaite</label>
+              <input
+                type="checkbox"
+                name="excellente"
+                value="excellente"
+                id="sidebar-excellente"
+              />
+              <label for="sidebar-excellente">Excellente</label>
+              <input type="checkbox" name="bonne" value="bonne" id="sidebar-bonne" />
+              <label for="sidebar-bonne">Bonne</label>
+              <input
+                type="checkbox"
+                name="moyenne"
+                value="moyenne"
+                id="sidebar-moyenne"
+              />
+              <label for="sidebar-moyenne">Moyenne</label>
+              <input
+                type="checkbox"
+                name="endommage"
+                value="endommage"
+                id="sidebar-endommage"
+              />
+              <label for="sidebar-endommage">Endommagé</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Couleur<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input type="checkbox" name="bleu" value="bleu" id="sidebar-bleu" />
+              <label for="sidebar-bleu">Bleu</label>
+              <input type="checkbox" name="rouge" value="rouge" id="sidebar-rouge" />
+              <label for="sidebar-rouge">Rouge</label>
+              <input type="checkbox" name="vert" value="vert" id="sidebar-vert" />
+              <label for="sidebar-vert">Vert</label>
+              <input type="checkbox" name="jaune" value="jaune" id="sidebar-jaune" />
+              <label for="sidebar-jaune">Jaune</label>
+              <input type="checkbox" name="orange" value="orange" id="sidebar-orange" />
+              <label for="sidebar-orange">Orange</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Montrer seulement<span class="chevron chevron-btn"></span></h3>
+            <div data-js-detail class="show">
+              <input
+                type="checkbox"
+                name="certifie"
+                value="certifie"
+                id="sidebar-certifie"
+              />
+              <label for="sidebar-certifie">Timbres certifiés</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Langue<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input
+                type="checkbox"
+                name="francais"
+                value="francais"
+                id="sidebar-francais"
+              />
+              <label for="sidebar-francais">Francais</label>
+              <input
+                type="checkbox"
+                name="anglais"
+                value="anglais"
+                id="sidebar-anglais"
+              />
+              <label for="sidebar-anglais">Anglais</label>
+              <input type="checkbox" name="latin" value="latin" id="sidebar-latin" />
+              <label for="sidebar-latin">Latin</label>
+              <input
+                type="checkbox"
+                name="italien"
+                value="italien"
+                id="sidebar-italien"
+              />
+              <label for="sidebar-italien">Italien</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Prix<span class="chevron chevron-btn"></span></h3>
+            <div data-js-detail class="show">
+              <div class="price-slider">
+                <p id="sidebar-price-slider-paragraph"></p>
+                <input
+                  aria-label="prix minimum"
+                  type="range"
+                  name="min-price"
+                  id="sidebar-min-price"
+                  class="price-slider-range"
+                  value="0"
+                  min="0"
+                  max="1000"
+                  step="1"
+                />
+                <input
+                  aria-label="prix maximum"
+                  type="range"
+                  name="max-price"
+                  id="sidebar-max-price"
+                  class="price-slider-range"
+                  value="1000"
+                  min="0"
+                  max="1000"
+                  step="1"
+                />
+                <div class="price-progress" id="sidebar-price-progress"></div>
+                <button aria-label="bouton soummettre" data-js-prix>
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Chercher dans<span class="chevron chevron-btn"></span></h3>
+            <div data-js-detail class="show">
+              <input
+                type="radio"
+                name="timbre"
+                value="actif"
+                id="sidebar-actif"
+                checked
+              />
+              <label for="sidebar-actif">Timbres actifs</label>
+              <input type="radio" name="timbre" value="archive" id="sidebar-archive" />
+              <label for="sidebar-archive">Timbres archivés</label>
+            </div>
+          </section>
+          <button type="reset">Réinitialiser</button>
+        </form>
+      </div>
+      <div class="list-catalog">
+        <!-- Filtres de recherche -->
+        <form class="search-filter" method="POST" action="">
+          <section data-js-section>
+            <h3>
+              Recherche spécifique<span class="chevron chevron-btn"></span>
+            </h3>
+            <div data-js-detail class="show">
+              <input
+                type="search"
+                aria-label="recherche spécifique"
+                placeholder=" Votre recherche..."
+                name="recherche-specifique"
+                data-js-search
+              />
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>
+              Pays d'origine<span class="chevron chevron-btn bottom"></span>
+            </h3>
+            <div data-js-detail class="show hide">
+              {% for pays in pays %}
+              <input type="checkbox" name="pays[]" value="{{pays.idPays}}" id="{{pays.nomPays}}" />
+              <label for="{{pays.nomPays}}">{{pays.nomPays}}</label>
+              {% endfor %}
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Date de fin<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input type="checkbox" name="demain" value="demain" id="demain" />
+              <label for="demain">Demain</label>
+              <input type="checkbox" name="2jours" value="2jours" id="2jours" />
+              <label for="2jours">2 Jours</label>
+              <input type="checkbox" name="3jours" value="3jours" id="3jours" />
+              <label for="3jours">3 Jours</label>
+              <input type="checkbox" name="4jours" value="4jours" id="4jours" />
+              <label for="4jours">4 Jours</label>
+              <input type="checkbox" name="5jours" value="5jours" id="5jours" />
+              <label for="5jours">5 Jours</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Condition<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              {% for condition in conditions %}
+              <input type="checkbox" name="condition[]" value="{{condition.idCondition}}" id="{{condition.nomCondition}}" />
+              <label for="{{condition.nomCondition}}">{{condition.nomCondition}}</label>
+              {% endfor %}
+          </section>
+          <section data-js-section>
+            <h3>Couleur<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input type="checkbox" name="couleur[]" value="bleu" id="bleu" />
+              <label for="bleu">Bleu</label>
+              <input type="checkbox" name="couleur[]" value="rouge" id="rouge" />
+              <label for="rouge">Rouge</label>
+              <input type="checkbox" name="couleur[]" value="vert" id="vert" />
+              <label for="vert">Vert</label>
+              <input type="checkbox" name="couleur[]" value="jaune" id="jaune" />
+              <label for="jaune">Jaune</label>
+              <input type="checkbox" name="couleur[]" value="orange" id="orange" />
+              <label for="orange">Orange</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Montrer seulement<span class="chevron chevron-btn"></span></h3>
+            <div data-js-detail class="show">
+              <input
+                type="checkbox"
+                name="certifie"
+                value="certifie"
+                id="certifie"
+              />
+              <label for="certifie">Timbres certifiés</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Langue<span class="chevron chevron-btn bottom"></span></h3>
+            <div data-js-detail class="show hide">
+              <input
+                type="checkbox"
+                name="francais"
+                value="francais"
+                id="francais"
+              />
+              <label for="francais">Francais</label>
+              <input
+                type="checkbox"
+                name="anglais"
+                value="anglais"
+                id="anglais"
+              />
+              <label for="anglais">Anglais</label>
+              <input type="checkbox" name="latin" value="latin" id="latin" />
+              <label for="latin">Latin</label>
+              <input
+                type="checkbox"
+                name="italien"
+                value="italien"
+                id="italien"
+              />
+              <label for="italien">Italien</label>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Prix<span class="chevron chevron-btn"></span></h3>
+            <div data-js-detail class="show">
+              <div class="price-slider">
+                <p id="price-slider-paragraph"></p>
+                <input
+                  aria-label="prix minimum"
+                  type="range"
+                  name="min-price"
+                  id="min-price"
+                  class="price-slider-range"
+                  value="0"
+                  min="0"
+                  max="1000"
+                  step="1"
+                />
+                <input
+                  aria-label="prix maximum"
+                  type="range"
+                  name="max-price"
+                  id="max-price"
+                  class="price-slider-range"
+                  value="1000"
+                  min="0"
+                  max="1000"
+                  step="1"
+                />
+                <div class="price-progress" id="price-progress"></div>
+                <button aria-label="bouton soummettre" data-js-prix>
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+          <section data-js-section>
+            <h3>Chercher dans<span class="chevron chevron-btn"></span></h3>
+            <div data-js-detail class="show">
+              <input
+                type="radio"
+                name="timbre"
+                value="actif"
+                id="actif"
+                checked
+              />
+              <label for="actif">Timbres actifs</label>
+              <input type="radio" name="timbre" value="archive" id="archive" />
+              <label for="archive">Timbres archivés</label>
+            </div>
+          </section>
+          <div>
+            <button type="reset">Réinitialiser</button>
+            <button type="submit">Rechercher</button>
+          </div>
+        </form>
+        <!-- Tri et afficher en grille ou liste -->
+        <div class="catalog-container">
+          <div>
+            <div>
+              <span class="bold">Items par page :</span>
+              <a href="#">10</a>
+              <a href="#">20</a>
+              <a href="#">30</a>
+              <a href="#">40</a>
+            </div>
+            <div>
+              <span class="bold">Trier par :</span>
+              <select aria-label="tri" name="tri">
+                <option value="nouveau">Nouveau</option>
+                <option value="prix">Prix</option>
+                <option value="date-fin">Date de fin</option>
+                <option value="lot">Numéro de lot</option>
+              </select>
+            </div>
+            <div class="buttons">
+              <div class="list"><i class="fa fa-list fa-2x"></i></div>
+              <div class="grid"><i class="fa fa-th fa-2x"></i></div>
+            </div>
+          </div>
+          <!-- liste de catalogue de timbres -->
+          <link rel="stylesheet" href="/projet-1/assets/css/list-catalog.css" />
+          <link rel="stylesheet" href="/projet-1/assets/css/item-catalog.css" />
+          <ul class="wrapper list" id="wrapper">
+            {% for enchere in encheres %}
+            <li
+              class="item-catalog view-list"
+              data-category="{{info[loop.index0][enchere.idEnchere]['timbre'][0].couleur}} canada francais 5jours {%if info[loop.index0][enchere.idEnchere]['timbre'][0].certifie is not null %}certifie {% endif%} "
+            >
+              <div class="current-bid-wrapper">
+                {% if info[loop.index0][enchere.idEnchere]['offre'][0].offre is null %}
+                <h3>
+                  Offre actuelle: <span class="current-bid bold">0$</span>
+                </h3>
+                {% else %}
+                <h3>
+                  Offre actuelle: <span class="current-bid bold">{{info[loop.index0][enchere.idEnchere]['offre'][0].offre}}$</span>
+                </h3>
+                {% endif %}
+                <h4>LOT {{enchere.idEnchere}}</h4>
+                {% for favori in favorisProprietaire if favori.idEnchere == enchere.idEnchere %}
+                <picture class="item-stamp">
+                  <img src="assets/img/Stamp1.png" alt="timbre" />
+                </picture>
+                {% endfor %}
+              </div>
+              <picture>
+                <img src="/projet-1/assets/img/{{info[loop.index0][enchere.idEnchere]['timbre'][0].imagePrincipale}}" alt="timbre" />
+              </picture>
+              <div class="item-info">
+                <section>
+                  <h2>
+                    {{enchere.nomEnchere}}
+                  </h2>
+                  <div class="extra-info">
+                    <span>Lot de {{info[loop.index0][enchere.idEnchere]['nbTimbre'][0]}} pièces</span>
+                    <span>{{info[loop.index0][enchere.idEnchere]['nbOffre'][0]}} offres</span>
+                  </div>
+                  <div>
+                    <div class="date">
+                      <span>Date de début:</span>
+                      <span class="bold">{{enchere.dateDebut}}</span>
+                    </div>
+                    <div class="date">
+                      <span>Date de fin:</span>
+                      <span class="bold">{{enchere.dateFin}}</span>
+                    </div>
+                  </div>
+                </section>
+                
+                <div class="like-button">
+                  {% if session.username is defined %}
+                  <i data-js-enchere="{{enchere.idEnchere}}" class="fa {%for favori in favoris if favori.idEnchere == enchere.idEnchere and favori.idUsager == session.idUsager %}fa-heart {% else %}fa-heart-o {% endfor %} fa-2x"></i>
+                  {% endif %}
+                </div>
+                
+                <div class="item-date">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  {% if enchere.dateDebut > "now"|date("Y-m-d H:i:s") %}
+                  <span class="bold" data-js-timer>{{enchere.dateDebut}}</span>
+                  {% elseif enchere.dateFin > "now"|date("Y-m-d H:i:s") %}
+                  <span class="bold" data-js-timer>{{enchere.dateFin}}</span>
+                  {% else %}
+                  <h1>Enchère expirée</h1>
+                  {% endif %}
+                  <span>jusqu'à la fin</span>
+                </div>
+                <a href="/projet-1/enchere/enchereId/{{enchere.idEnchere}}" class="link-button"
+                  >Placer une mise</a
+                >
+              </div>
+            </li>
+            {% endfor %}
+     
+          </ul>
+          <!-- Pagination -->
+          <link rel="stylesheet" href="/projet-1/assets/css/pagination.css" />
+          <link rel="stylesheet" href="/projet-1/assets/css/main.css" />
+          <aside data-pagination>
+            <a href="#" aria-label="précédent"
+              ><i class="fa fa-chevron-left" aria-hidden="true"></i
+            ></a>
+            <ul>
+              <li class="current"><a href="#1">1</a></li>
+              <li><a href="#2">2</a></li>
+              <li><a href="#3">3</a></li>
+              <li><a href="#4">4</a></li>
+              <li><a href="#5">5</a></li>
+              <li><a href="#6">6</a></li>
+              <li><a href="#7">7</a></li>
+              <li><a href="#8">8</a></li>
+              <li><a href="#9">9</a></li>
+              <li><a href="#10">…</a></li>
+              <li><a href="#41">41</a></li>
+            </ul>
+
+            <a href="#2" aria-label="suivant"
+              ><i class="fa fa-chevron-right" aria-hidden="true"></i
+            ></a>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    {% include ('footer.html') %}

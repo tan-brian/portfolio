@@ -1,0 +1,43 @@
+{% include ('header.html') %}
+  <link rel="stylesheet" href="/projet-1/assets/css/list.css" />
+  <link rel="stylesheet" href="/projet-1/assets/css/form.css" />
+  
+  <main>
+
+      <section class="form">
+          <h1>Mon profil</h1>
+          <form   method="POST" action="/projet-1/usager/modifierProfil">
+            <label  for="nomUsager" >Nom Usager :</label>
+            <input type="text" id="nomUsager" name="nomUsager" disabled value="{{ usager.nomUsager }}"/>
+            <label  for="motDePasse" >Nouveau mot de passe :</label>
+            <input type="password" id="motDePasse" name="motDePasse" />
+            <label  for="motDePasse2" >Entrez le mot de passe de nouveau :</label>
+            <input type="password" id="motDePasse2" name="motDePasse2" />
+            <label  for="prenom" >Prénom :</label>
+            <input type="text" id="prenom" name="prenom" value="{{ usager.prenom }}"/>
+            <label  for="prenom" >Nom :</label>
+            <input type="text" id="nom" name="nom" value="{{ usager.nom }}"/>
+            <label  for="idPays" >Pays :</label>
+            <select id="idPays" name="idPays">
+                {% for pays in pays %}
+                    <option  {% if pays.idPays == usager.idPays %} selected {% endif %} value="{{ pays.idPays }}">
+                        {{ pays.nomPays }}
+                    </option>
+                {% endfor %}
+              </select>
+            <div>
+              <input type="hidden" name="idUsager" value="{{ session.idUsager}}">
+              <a href="/projet-1/usager/supprimerCompte/{{ session.idUsager}}" class="link-button">Supprimer mon compte</a>
+              <button type="submit">Sauvegarder</button>
+            </div>
+          </form>
+          {%if erreurs is defined %}
+          <ul> 
+              {% for erreur in erreurs %}
+                  <li>{{ erreur }}</li>
+              {% endfor %}
+          </ul>
+         {% endif %}          
+      </section>
+  </main>
+  {% include ('footer.html') %}

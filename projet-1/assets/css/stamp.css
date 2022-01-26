@@ -1,0 +1,62 @@
+.stamp {
+  text-align: center;
+  background-color: var(--blanc);
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  padding: 1em;
+  padding-top: 1.7em;
+  transition: opacity 0.3s ease;
+}
+
+.stamp:hover {
+  opacity: 0.7;
+}
+
+.stamp div {
+  text-align: left;
+}
+
+.stamp a * {
+  margin-bottom: 0.5em;
+  color: black;
+}
+
+.stamp span {
+  display: block;
+}
+
+.stamp img {
+  height: 10em;
+  width: 10em;
+}
+
+.stamp span:nth-of-type(2) {
+  color: var(--bleu);
+}
+
+.stamp span:nth-of-type(3) * {
+  color: var(--rouge-pale);
+}
+
+.stamp span:nth-of-type(3) > span {
+  display: inline;
+  
+}
+
+.stamp h3 {
+  display: -webkit-box;
+  width: 11em;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stamp h2 {
+  margin-bottom: 6em;
+}
+
+.stamp i {
+  color: var(--rouge-pale);
+  margin-right: 0.3em;
+}

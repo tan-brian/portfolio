@@ -1,0 +1,28 @@
+{% include ('header.html') %}
+
+<link rel="stylesheet" href="/projet-1/assets/css/list.css" />
+<link rel="stylesheet" href="/projet-1/assets/css/form.css" />
+    
+  <main>
+      <section class="form ">
+          <h1>Authentification</h1>
+          <form class="login"  method="POST" action="/projet-1/usager/login">
+            <label  for="nomUsager" >Nom Usager :</label>
+            <input type="text" id="nomUsager" name="nomUsager" value="{{ post.nomUsager }}"/>
+            <label  for="motDePasse" >Mot de passe :</label>
+            <input type="password" id="motDePasse" name="motDePasse" value="{{ post.motDePasse }}"/>
+            
+            <div>
+              <button type="submit">Login</button>
+            </div>
+            <a href="/projet-1/usager/formInscription/">S'inscrire</a>
+          </form>
+          {%if erreur is defined %}
+            <ul> 
+                    <li>{{ erreur }}</li>
+            </ul>
+           {% endif %}             
+      </section>
+  </main>
+   
+  {% include ('footer.html') %}

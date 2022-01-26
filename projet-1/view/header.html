@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Brian Tan" />
+  <meta name="description" content="{{ pageTitre }}" />
+  <title>{{ pageTitre }}</title>
+
+  <!-- Fichiers CSS -->
+
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0"/>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'" />
+  <link rel="preload" crossorigin href="/projet-1/assets/fonts/proxima-nova.ttf" as="font" type="font/woff2">
+  <link rel="preload" crossorigin href="/projet-1/assets/fonts/Georgia.ttf" as="font" type="font/woff2">
+  <link rel="stylesheet" href="/projet-1/assets/css/navbar.css" />
+  <link rel="stylesheet" href="/projet-1/assets/css/search-bar.css" />
+
+  
+  <link rel="stylesheet" href="/projet-1/assets/css/main.css" />
+
+   <!-- Fichiers Javascript-->
+   <script src="/projet-1/assets/js/scripts.js" defer></script>
+   
+</head>
+<body>
+<header>
+    <!-- navigation -->
+    <nav>
+        <div class="mobile-nav">
+        <a href="/projet-1/" class="nav-link logo"><img src="/projet-1/assets/img/cover.png" alt="logo" /></a>
+        <button class="mobile-btn" onclick="toggleMenu(1)">Menu</button>
+        </div>
+        <ul class="nav">
+        <li class="close-item">
+            <button class="mobile-btn" onclick="toggleMenu(0)">
+            Close &times;
+            </button>
+        </li>
+        <li class="nav-item">
+            <a href="/projet-1/" class="nav-link logo"><img src="/projet-1/assets/img/cover.png" alt="logo" /></a>
+        </li>
+        <li class="nav-item">
+            <a href="/projet-1/" class="nav-link">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a href="#!" class="nav-link">
+            À propos de Lord Reginald Stampee III
+            <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dp-menu level-1">
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> La philatélie, c’est la vie. </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Biographie du Lord </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Historique familial </a>
+            </li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <a href="#!" class="nav-link">
+            Actualités <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dp-menu level-1">
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Timbres </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Enchères </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Bridge </a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#!" class="nav-link">
+            Fonctionnement de la plateforme <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dp-menu level-1">
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Profil </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Comment placer une offre </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Suivre une enchère </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Trouver l’enchère désirée </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Contacter le webmestre </a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#!" class="nav-link">Contactez-nous
+            <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dp-menu level-1">
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Angleterre </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Canada </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> US </a>
+            </li>
+            <li class="dp-item">
+                <a href="#!" class="dp-link"> Australie </a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#!" class="nav-link">Termes et conditions </a>
+        </li>
+        {% if session.username is defined %}
+        <li class="nav-item btn-profil">
+            <a href="#!" class="nav-link">
+            <i class="fa fa-user fa-2x" aria-hidden="true"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dp-menu level-1">
+            <li class="dp-item">
+                <a href="/projet-1/timbre" class="dp-link">Mes timbres</a>
+            </li>
+            <li class="dp-item">
+                <a href="/projet-1/enchere/ajouterEnchere/" class="dp-link">Mes enchères</a>
+            </li>
+            <li class="dp-item">
+                <a href="/projet-1/usager/profil/" class="dp-link">Mon profil</a>
+            </li>
+            </ul>
+        </li>
+        {% endif %}
+        {% if session.roleId == 1 %} 
+        <li class="nav-item">
+            <a href="/projet-1/usager/admin/" class="nav-link"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
+        </li>
+        {% endif %}
+        <li>
+            {% if session.username is defined %}
+            <a href="/projet-1/usager/logout/" class="login-btn">
+            Logout<i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
+            {% else %}
+            <a href="/projet-1/usager" class="login-btn">
+            Login<i class="fa fa-sign-in" aria-hidden="true"></i>
+            </a>
+            {% endif %}
+        </li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <form>
+        <input aria-label="recherche" placeholder="Recherche" type="text" name="recherche" id="recherche" />
+        <select name="recherche-select" aria-label="options de recherche">
+            <option value="tous">Tous</option>
+            <option value="timbre">Timbres</option>
+            <option value="nouvelle">Nouvelles</option>
+            <option value="evenement">Événements</option>
+        </select>
+        <button aria-label="recherche">
+            <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+        </button>
+        </form>
+        <button>Recherche avancée</button>
+    </div>
+</header>

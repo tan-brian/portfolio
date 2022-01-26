@@ -1,0 +1,43 @@
+{% include ('header.html') %}
+  <link rel="stylesheet" href="/projet-1/assets/css/list.css" />
+  <link rel="stylesheet" href="/projet-1/assets/css/form.css" />
+  
+  <main>
+
+      <section class="form ">
+          <h1>Inscription</h1>
+          <form class="login"  method="POST" action="/projet-1/usager/inscription">
+            <label  for="nomUsager" >Nom Usager :</label>
+            <input type="text" id="nomUsager" name="nomUsager" value="{{ post.nomUsager }}"/>
+            <label  for="motDePasse" >Mot de passe :</label>
+            <input type="password" id="motDePasse" name="motDePasse" value="{{ post.motDePasse }}"/>
+            <label  for="prenom" >Prénom :</label>
+            <input type="text" id="prenom" name="prenom" value="{{ post.prenom }}"/>
+            <label  for="prenom" >Nom :</label>
+            <input type="text" id="nom" name="nom" value="{{ post.nom }}"/>
+            <label  for="idPays" >Pays :</label>
+            <select id="idPays" name="idPays">
+              {% for pays in pays %}
+                  <option  {% if pays.idPays == post.idPays %} selected {% endif %} value="{{ pays.idPays }}">
+                      {{ pays.nomPays }}
+                  </option>
+              {% endfor %}
+            </select>
+            <input type="hidden" name="idRole" value="2">
+            <input type="hidden" name="dateCreation" value="{{"now"|date("Y-m-d H:i:s")}}">
+            <div>
+              <button type="submit">S'inscrire</button>
+            </div>
+          </form>
+          {%if erreurs is defined %}
+          <ul> 
+              {% for erreur in erreurs %}
+                  <li>{{ erreur }}</li>
+              {% endfor %}
+          </ul>
+         {% endif %}  
+           
+      </section>
+  </main>
+   
+  {% include ('footer.html') %}

@@ -1,0 +1,111 @@
+/* https://codepen.io/rebelchris/pen/qBOpEyW */
+
+.list-catalog {
+  display: flex;
+  justify-content: center;
+}
+
+.list-catalog > :first-child {
+  min-width: 18em;
+}
+
+.list-catalog select {
+  font-family: inherit;
+  padding: 0.5em;
+}
+
+.list-catalog aside {
+  margin-top: 2em;
+}
+
+.catalog-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.catalog-container > div:first-of-type {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 1em;
+}
+
+div > span {
+  margin-right: 0.5em;
+}
+
+a + a {
+  margin-left: 0.5em;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons div {
+  margin: 0px 10px;
+  color: var(--blanc);
+  cursor: pointer;
+  padding: 0.3em;
+  border-radius: 3px;
+  background-color: var(--gris-fonce);
+}
+
+.buttons div > * {
+  pointer-events: none;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  column-gap: 10px;
+}
+
+/* mettre une largeur lorsqu'il y a un résultat lors du filtrage */
+.wrapper.one-item {
+  width: 26em;
+}
+
+/* mettre une largeur lorsqu'il y a deux résultats lors du filtrage */
+.wrapper.two-items {
+  width: 54em;
+}
+
+.wrapper.list {
+  grid-template-columns: 1fr;
+}
+
+.buttons .list {
+  background-color: var(--rouge-fonce);
+}
+
+@media (max-width: 1700px) {
+  .catalog-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .catalog-container {
+    font-size: 0.9em;
+  }
+
+  li.item-catalog picture:not(.item-stamp) {
+    max-width: 10em;
+    min-width: 10em;
+  }
+}
+
+@media (max-width: 850px) {
+  .catalog-container {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 430px) {
+  .catalog-container > div:first-of-type .bold {
+    display: none;
+  }
+}

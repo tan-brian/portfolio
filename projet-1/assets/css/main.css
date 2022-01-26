@@ -1,0 +1,305 @@
+/* 
+
+Palette de couleurs
+
+bleu: #012169
+
+gris: #ABA9BB
+      #777586
+
+rouge: #600009
+       #992E35
+
+Police de caractère
+
+Georgia - titres
+Proxima-Nova - body
+
+*/
+
+@font-face {
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Georgia.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Proxima-Nova";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/proxima-nova.ttf") format("truetype");
+}
+
+:root {
+  --bleu-fonce: #012169;
+  --blue-pale: #0136b1;
+  --bleu: #2d5dce;
+  --blanc: white;
+  --gris-pale: #aba9bb;
+  --gris: #d8d8d8;
+  --gris-fonce: #777586;
+  --rouge-pale: #992e35;
+  --rouge-fonce: #600009;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Georgia";
+  line-height: 1.25em;
+}
+
+html {
+  font-size: 14.5px;
+  font-family: "Proxima-Nova";
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+min-height: 100vh;
+  background-color: #e5e5e9;
+}
+
+nav {
+  width: 100%;
+  background-color: var(--blanc);
+}
+
+main {
+  margin: 6em 4em;
+  margin-bottom: 8em;
+}
+
+aside {
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+}
+
+a {
+  text-decoration: none;
+  color: var(--bleu);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--bleu-fonce);
+}
+
+figure {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+p {
+  line-height: 1.4;
+}
+
+input[type="checkbox"] {
+  width: 2em;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+label {
+  width: fit-content;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+pre {
+  font-family: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+/* lien avec styles */
+
+.link-button {
+  padding: 0.8em;
+  border-radius: 0.4em;
+  background-color: var(--bleu-fonce);
+  color: var(--blanc);
+  height: fit-content;
+  font-family: inherit;
+  transition: background-color 0.3s ease;
+}
+
+.link-button:hover {
+  background-color: var(--blue-pale);
+  color: var(--blanc);
+}
+
+/* Pied de page */
+
+footer {
+  width: 100%;
+  background-color: var(--rouge-fonce);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--blanc);
+  padding-bottom: 2em;
+  margin-top: auto;
+
+}
+
+footer > section {
+  margin: 3em;
+}
+
+footer > section a {
+  transition: border-bottom 0.3s ease;
+}
+
+footer > section a:hover {
+  border-bottom: solid var(--blanc) 1px;
+  color: var(--blanc);
+}
+
+footer a {
+  color: inherit;
+}
+
+footer li {
+  margin-top: 1em;
+  font-size: 17px;
+}
+
+footer button {
+  font-size: 20px;
+  padding: 0.8em 1.3em;
+  background-color: var(--bleu-fonce);
+  color: var(--blanc);
+  border-radius: 0.4em;
+  border-color: var(--blue-pale);
+  transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+  background-color: var(--blue-pale);
+}
+
+footer div {
+  align-self: center;
+}
+
+footer div a {
+  margin-left: 1em;
+  transition: opacity 0.3s ease;
+}
+
+footer div a:hover {
+  opacity: 0.8;
+  color: var(--blanc);
+}
+
+footer p {
+  width: 100%;
+  text-align: center;
+}
+
+footer p a {
+  border-bottom: 1px solid var(--blanc);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+footer p a:hover {
+  color: var(--bleu);
+  border-color: var(--bleu);
+}
+
+footer div span {
+  display: block;
+  margin: 1.5em 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Bouton favori */
+.like-button {
+  margin-left: auto;
+}
+
+.like-button i {
+  color: #f12e42;
+  margin-right: 10px;
+  cursor: pointer;
+  height: fit-content;
+  transition: color 0.2s ease;
+}
+
+.like-button i:hover {
+  color: #fd5667;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+@media (max-width: 565px) {
+  footer > section {
+    margin-bottom: 0;
+    width: 15em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer > div {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+}
+
+@media (max-width: 430px) {
+  main {
+    margin: 6em 1.5em;
+  }
+}

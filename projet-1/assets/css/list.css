@@ -1,0 +1,66 @@
+
+.list > * {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.list:last-of-type {
+    margin-top: 3em;
+}
+
+.list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.list li {
+    padding: 0.8em;
+    background-color: var(--blanc);
+    box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+}
+
+
+.list a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+    transition: opacity 0.3s ease;
+}
+
+.list a:hover {
+    opacity: 0.7;
+}
+
+.list img {
+    width: 10em;
+    height: 10em;
+}
+
+.myAuction-list ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.myAuction-list li {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.myAuction-list a {
+    text-decoration: underline;
+}
+
+.myAuction-list h1 {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+ 
+ 

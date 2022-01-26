@@ -1,0 +1,212 @@
+/*https://codepen.io/avionics18/pen/mdVwJKm*/
+
+.btn-profil .level-1 {
+ width: max-content;
+}
+
+a.logo {
+  width: 8em;
+  padding: 0;
+  margin-right: 0.5em;
+}
+
+.logo:hover {
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  opacity: 0.8;
+}
+
+.login-btn {
+  background-color: var(--bleu-fonce);
+  color: var(--blanc);
+  cursor: pointer;
+  font-size: 1.6em;
+  padding: 0.5em 1em;
+  height: fit-content;
+  border: 0;
+  border-radius: 7px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  position: absolute;
+  top: 0.6em;
+  right: 3em;
+}
+
+.login-btn i {
+  display: none;
+}
+
+
+.login-btn:hover {
+  color: var(--blanc);
+  background-color: var(--blue-pale);
+}
+
+.mobile-nav,
+.close-item {
+  display: none;
+}
+
+.nav {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  position: relative;
+  background-color: inherit;
+}
+
+.nav .fa {
+  margin-left: 5px;
+}
+.nav-item {
+  position: relative;
+  background-color: inherit;
+}
+.nav-link,
+.dp-link {
+  color: var(--bleu-fonce);
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  padding: 14px 2.1vh;
+}
+
+.nav-link {
+  transition: background-color 0.3s ease;
+}
+.nav-link:hover {
+  color: #175dff;
+}
+
+/* Dropdown Menu */
+.dp-menu {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  z-index: 2;
+}
+.dp-menu a {
+  transition: color 0.2s ease;
+}
+.dp-menu a:hover {
+  color: var(--blanc);
+}
+.dp-item {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.dp-item:hover {
+  background-color: var(--gris-pale);
+}
+
+.level-1 {
+  display: none;
+  background-color: inherit;
+  width: 100%;
+}
+
+.nav-item:hover > .level-1 {
+  display: block;
+}
+
+@media (max-width: 1600px) {
+  .nav-link {
+    padding-left: 0;
+  }
+
+  .login-btn {
+    right: 0.5em;
+  }
+}
+
+@media (max-width: 1600px) {
+  .nav-link {
+    padding-left: 0;
+  }
+
+  .login-btn {
+    right: 1em;
+  }
+}
+
+@media (max-width: 1350px) {
+  .nav {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 1250px) {
+  .nav {
+    justify-content: flex-start;
+    margin-left: 2vw;
+  }
+}
+
+@media (max-width: 1150px) {
+  .login-btn {
+    left: 1.3em;
+    top: 1.3em;
+  }
+
+  .nav .logo {
+    display: none;
+  }
+
+  .nav-item {
+    font-size: 1.3em;
+    margin-left: 1em;
+  }
+
+  .mobile-nav {
+    display: flex;
+    padding: 10px 15px;
+    background-color: var(--blanc);
+    gap: 2em;
+  }
+
+  .mobile-btn {
+    color: var(--blanc);
+    background-color: #666;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 1);
+    border: none;
+    padding: 8px 18px;
+    margin-right: 1em;
+    margin-left: auto;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.25s ease;
+  }
+
+  .mobile-btn:hover {
+    cursor: pointer;
+    background-color: #555;
+  }
+
+  .nav {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    top: 0;
+    left: -110%;
+  }
+
+  li.close-item {
+    display: block;
+    padding: 20px 18px;
+    text-align: right;
+  }
+
+  .dp-menu {
+    width: 100%;
+    position: static;
+  }
+
+  .level-1 > .dp-item > .dp-link {
+    padding-left: 28px;
+  }
+}

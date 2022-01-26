@@ -1,0 +1,82 @@
+/* https://codepen.io/thefeldkircher/pen/orjWBG */
+
+.new {
+  justify-self: center;
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  grid-row-start: span 2;
+}
+
+.new h4 {
+  display: -webkit-box;
+  width: 18em;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.5em;
+  text-align: left;
+  margin-left: 6em;
+}
+
+.new h2 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5em;
+}
+
+.new img {
+  width: 12em;
+  height: 6em;
+}
+
+.new li {
+  list-style: none;
+  position: relative;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.new li:hover {
+  opacity: 0.9;
+}
+
+.new li a {
+  display: block;
+}
+
+.added-date {
+  position: absolute;
+  top: 1.1em;
+  width: 60px;
+}
+
+.added-date:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-top: 22px solid #e2574c;
+  border-bottom: 50px solid var(--gris);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.added-date h3 {
+  position: relative;
+  z-index: 2;
+  margin-top: -6px;
+  font-size: 16px;
+  color: black;
+  line-height: 36px;
+}
+
+.added-date h3 span {
+  font-size: 36px;
+  color: #324d5b;
+}
